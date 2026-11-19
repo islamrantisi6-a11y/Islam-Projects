@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استكشف القمم | تصميم مستوحى من الطبيعة</title>
+    <!-- استدعاء خط عربي عصري (Cairo) من خطوط جوجل -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* قسم الواجهة الرئيسية باستخدام الصورة */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            /* ضع رابط صورتك هنا بدلاً من الرابط الافتراضي */
+          background-image: url('bj.jpg');
+
+            background-size: cover;
+            background-position: center bottom;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* طبقة تدرج خفيفة لتعزيز وضوح النصوص في الأعلى والأسفل */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.7) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
+            z-index: 1;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #111;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #666;
+        }
+
+        /* محتوى المنتصف (العنوان والوصف) */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-top: -80px; /* رفع النص قليلاً ليقع في منطقة السماء الفاتحة */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #111;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #111;
+            color: #fff;
+            border: 2px solid #111;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #111;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #111;
+            border: 2px solid #111;
+        }
+
+        .btn-secondary:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* شريط المعلومات السفلي فوق الجبال الداكنة */
+        .bottom-bar {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-around;
+            padding: 25px 8%;
+            color: #fff;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item span {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* التجاوب مع شاشات الهواتف */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            nav ul {
+                display: none;
+            }
+            .bottom-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="overlay"></div>
+        
+        <!-- الهيدر -->
+        <header>
+            <a href="#" class="logo">ألبـيـنـا.</a>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">الرحلات</a></li>
+                    <li><a href="#">المعرض</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- النص الرئيسي في مساحة السماء -->
+        <div class="hero-content">
+            <h1>اكتشف سكون القمم العالية</h1>
+            <p>تجربة استثنائية تأخذك إلى أعالي جبال الألب السويسرية حيث يلتقي صفاء السماء ببياض الثلوج.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">ابدأ المغامرة</a>
+                <a href="#" class="btn btn-secondary">استعرض المسارات</a>
+            </div>
+        </div>
+
+        <!-- إحصائيات سفلية -->
+        <div class="bottom-bar">
+            <div class="stat-item">
+                <h3>3,454 م</h3>
+                <span>أعلى ارتفاع</span>
+            </div>
+            <div class="stat-item">
+                <h3>-12°C</h3>
+                <span>متوسط الحرارة</span>
+            </div>
+            <div class="stat-item">
+                <h3>24 مسار</h3>
+                <span>للتسلق والاستكشاف</span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
